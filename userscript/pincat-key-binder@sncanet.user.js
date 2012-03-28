@@ -1,7 +1,7 @@
 // ==UserScript==
 // @id             pincat-key-binder@snca.net
 // @name           Pincat Key Binder
-// @version        1.0
+// @version        1.1
 // @namespace      pincat-key-binder@snca.net
 // @author
 // @description    Add some key bindings for PinCat
