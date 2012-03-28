@@ -22,6 +22,11 @@ function click (elem) {
   elem.dispatchEvent(ev);
 }
 
+function openPinterest (iframe) {
+  var params = iframe.src.match(/\?.*$/)[0];
+  window.open('http://pinterest.com/pin/create/button/' + params);
+}
+
 var Control = {
   __currentCatElement: null,
   __currentCatIndex: null,
@@ -151,9 +156,9 @@ var Control = {
 
   pinItCurrent: function () {
     if (Control.expanded()) {
-      click(document.querySelector('.pinterest_cbox > iframe').contentDocument.querySelector('#PinItButton'));
+      openPinterest(document.querySelector('.pinterest_cbox > iframe'));
     } else {
-      click(this.__currentCatElement.querySelector('iframe').contentDocument.querySelector('#PinItButton'));
+      openPinterest(this.__currentCatElement.querySelector('iframe'));
     }
   },
 
