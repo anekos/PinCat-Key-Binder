@@ -26,7 +26,11 @@ var Control = {
   __currentCatElement: null,
   __currentCatIndex: null,
 
-  getNextCat: function () {
+  __currentCats: function () {
+    return [this.__currentCatIndex, this.__currentCatElement];
+  },
+
+  getNextCat: function (loop) {
     if (!this.__currentCatElement)
       return [0, document.querySelector('.thumbnail')];
 
@@ -35,10 +39,10 @@ var Control = {
     if (ni < es.length)
       return [ni, es[ni]];
 
-    return [0, es[0]];
+    return loop ? [0, es[0]] : this.__currentCats();
   },
 
-  getPreviousCat: function () {
+  getPreviousCat: function (loop) {
     var es = document.querySelectorAll('.thumbnail');
     var li = es.length - 1;
 
@@ -49,10 +53,10 @@ var Control = {
     if (pi >= 0)
       return [pi, es[pi]];
 
-    return [li, es[li]];
+    return loop ? [li, es[li]] : this.__currentCats();
   },
 
-  getAboveCat: function () {
+  getAboveCat: function (loop) {
     var es = document.querySelectorAll('.thumbnail');
     var li = es.length - 1;
 
@@ -63,7 +67,7 @@ var Control = {
     if (pi >= 0)
       return [pi, es[pi]];
 
-    return [li, es[li]];
+    return loop ? [li, es[li]] : this.__currentCats();
   },
 
   getBelowCat: function () {
@@ -75,8 +79,11 @@ var Control = {
     if (ni < es.length)
       return [ni, es[ni]];
 
-    var li = es.length - 1;;
-    return (es.length % 4 == 0) ? [0, es[0]] : [li, es[li]];
+    var li = es.length - 1;
+    if (es.length % 4 > 0)
+      return [li, es[li]]
+
+    return loop ? [0, es[0]] : this.__currentCats();
   },
 
   __focusTo: function (index, elem) {
