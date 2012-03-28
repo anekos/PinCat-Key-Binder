@@ -14,6 +14,7 @@ Normal
     Enter     Expand
     i         Open Instagram page for current selection
     t         Open Twitter page for current selection
+    p         Open Pinterest (PinIt) for current selection
 
 
 Expanded
@@ -23,6 +24,7 @@ Expanded
     j,l       Next Photo
     i         Open Instagram page
     t         Open Twitter page
+    t         Open Pinterest (PinIt) page
     Esc       Shrink(close)
 
 
