@@ -242,16 +242,18 @@ document.addEventListener(
     function track (e) {
       if (!e)
         return;
+      if (!e.getAttribute)
+        return;
       if (/\bthumbnail\b/.test(e.getAttribute('class', '')))
         return e;
       return track(e.parentNode);
     }
 
-    var thumbnail = track(e.originalTarget);
+    var thumbnail = track(e.target);
     if (thumbnail)
       Control.focusCatElement(thumbnail);
   },
-  true
+  false
 );
 
 
